@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratoire Shifa - Dr Sanae Chahbouni</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #00a99d; 
+            --secondary-color: #4e3629; 
+            --bg-light: #f8f9fa;
+            --urgent-color: #d9534f;
+            --maps-color: #4285F4;
+            --call-bg: #f1f1f1;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg-light); color: #333; line-height: 1.6; }
+
+        /* --- EN-TÊTE --- */
+        header {
+            background: #fff;
+            padding: 10px 3%; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand img { height: 110px; width: auto; display: block; }
+        .brand-text h1 { color: var(--primary-color); font-size: 2.6rem; line-height: 0.9; font-weight: 700; }
+        .brand-text p { color: var(--secondary-color); font-weight: 600; font-size: 1.3rem; }
+
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { text-decoration: none; color: var(--secondary-color); font-weight: 600; transition: 0.3s; }
+        nav a:hover { color: var(--primary-color); }
+
+        /* --- BANNIÈRE --- */
+        .banner-container { width: 100%; background-color: #0076b6; line-height: 0; }
+        .banner-container img { width: 100%; height: auto; display: block; }
+
+        /* --- CONTENU --- */
+        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        
+        .section-title { color: var(--secondary-color); font-size: 2.2rem; margin-bottom: 20px; border-bottom: 3px solid var(--primary-color); display: inline-block; padding-bottom: 5px; }
+
+        /* BIO SECTION */
+        .bio-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .bio-photo img { width: 100%; max-width: 300px; height: auto; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 3px solid #eee; }
+        .bio-text { flex: 2; }
+        .bio-text p { font-size: 1.1rem; text-align: justify; }
+
+        /* INFOS LABO SECTION */
+        .labo-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+        .labo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        .labo-card {
+            background: var(--bg-light);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary-color);
+        }
+        .labo-card h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .labo-card ul { list-style: none; padding: 0; }
+        .labo-card ul li { position: relative; padding-left: 30px; margin-bottom: 12px; color: #444; font-size: 1.05rem; }
+        .labo-card ul li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        /* SECTION VIDÉO */
+        .video-section {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .video-container {
+            margin-top: 20px;
+        }
+        .video-container video {
+            width: 100%;
+            max-width: 800px; /* Limite la largeur sur les grands écrans */
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        /* GRILLE CONTACTS */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .info-box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 5px solid var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .info-box i.main-icon { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px; }
+        .info-box h3 { color: var(--secondary-color); margin-bottom: 15px; font-size: 1.5rem; }
+        
+        /* BOUTONS */
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .btn-call { background-color: var(--call-bg); color: var(--secondary-color) !important; border: 1px solid #ddd; }
+        .btn-call:hover { background-color: #e5e5e5; }
+
+        .btn-ramassage { background-color: var(--urgent-color); color: white !important; margin-top: 15px; }
+        .btn-ramassage:hover { background-color: #c9302c; transform: translateY(-2px); }
+
+        .btn-maps { background-color: var(--maps-color); color: white !important; margin-top: 20px; }
+        .btn-maps:hover { background-color: #3367d6; transform: translateY(-2px); }
+
+        footer { background: var(--secondary-color); color: white; padding: 40px; text-align: center; margin-top: 50px; }
+        .fb-link { color: white; font-size: 3rem; transition: 0.3s; }
+        .fb-link:hover { color: var(--primary-color); }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; gap: 15px; padding: 15px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .bio-section { flex-direction: column; text-align: center; }
+            .brand img { height: 85px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <img src="logo.png" alt="Logo Shifa">
+            <div class="brand-text">
+                <h1>SHIFA</h1>
+                <p>Dr Sanae Chahbouni</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#labo">Plus d'infos sur le labo</a></li>
+                <li><a href="#video">Vidéo</a></li>
+                <li><a href="#infos">Horaires & Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="banner-container" id="accueil">
+        <img src="enseigne.png" alt="Enseigne Shifa">
+    </div>
+
+    <div class="container">
+        
+        <div class="bio-section">
+            <div class="bio-photo">
+                <img src="docteur.png" alt="Dr Sanae Chahbouni">
+            </div>
+            <div class="bio-text">
+                <h2 class="section-title">Le Docteur</h2>
+                <p><strong>Dr Sanae Chahbouni</strong> est le médecin propriétaire du laboratoire Shifa et Ex. chef de service d'anatomie pathologique CHR de Fès. Elle détient une grande expertise grâce aux multiples expériences reçues lors de son internat au CHU Hassan II de Fès et au CHU de Lyon.</p>
+                <p style="margin-top:10px;">Sans compter ses innombrables formations continues multidisciplinaires telles que le DU Dermatopathologie de Paris et sa présence irrévocable aux congrès multinationaux.</p>
+            </div>
+        </div>
+
+        <div class="labo-section" id="labo">
+            <div style="text-align: center;">
+                <h2 class="section-title">Plus d'infos sur le laboratoire</h2>
+            </div>
+            
+            <div class="labo-grid">
+                <div class="labo-card">
+                    <h4><i class="fas fa-microscope"></i> Qualité Technique</h4>
+                    <ul>
+                        <li>Des analyses réalisées selon des standards internationaux reconnus.</li>
+                        <li>Participation à des programmes d’assurance qualité externe, notamment en immunohistochimie (UK-NEQAS).</li>
+                    </ul>
+                </div>
+                <div class="labo-card">
+                    <h4><i class="fas fa-clipboard-check"></i> Gestion & Traçabilité</h4>
+                    <ul>
+                        <li>Une gestion efficace des prélèvements, assurée dans des délais optimisés.</li>
+                        <li>Un suivi rigoureux et continu de chaque étape du processus.</li>
+                        <li>Une traçabilité complète, depuis l’accueil jusqu’à la transmission.</li>
+                        <li>Rendu des résultats compris entre 3 et 15 jours, selon le prélèvement.</li>
+                    </ul>
+                </div>
+                <div class="labo-card">
+                    <h4><i class="fas fa-user-md"></i> Accompagnement Médical</h4>
+                    <ul>
+                        <li>Disponibilité du pathologiste pour accompagner, conseiller et échanger avec les médecins.</li>
+                        <li>Approche pluridisciplinaire.</li>
+                        <li>Résultats communiqués au médecin traitant par voie électronique (email) ou par fax.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-section" id="video">
+            <h2 class="section-title">Présentation en Vidéo</h2>
+            <div class="video-container">
+                <video controls preload="metadata">
+                    <source src="video.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos. Mettez-le à jour pour voir le contenu.
+                </video>
+            </div>
+        </div>
+
+        <div class="info-grid" id="infos">
+            <div class="info-box">
+                <div>
+                    <i class="fas fa-clock main-icon"></i>
+                    <h3>Horaires</h3>
+                    <p><strong>Lundi au Samedi :</strong><br>08H00 – 19H00</p>
+                    <p style="margin-top: 15px; font-weight: 600;">Dimanche :</p>
+                    <a href="tel:+212693888589" class="btn-action btn-ramassage">
+                        <i class="fas fa-phone-alt"></i> Joignable : +212 693-888589
+                    </a>
+                </div>
+            </div>
+            <div class="info-box">
+                <div>
+                    <i class="fas fa-phone-alt main-icon"></i>
+                    <h3>Contact</h3>
+                    <p style="margin-bottom: 5px; font-size: 0.9rem; color: #666;">Cliquez pour appeler :</p>
+                    <a href="tel:0663552558" class="btn-action btn-call"><span>La Flotte :</span> 0663552558</a>
+                    <a href="tel:0535767490" class="btn-action btn-call"><span>Fixe :</span> 0535767490</a>
+                    <p style="margin-top: 15px; font-weight: 700; color: var(--urgent-color);">Ramassage :</p>
+                    <a href="tel:+212693888589" class="btn-action btn-ramassage"><i class="fas fa-truck"></i> +212 693-888589</a>
+                </div>
+            </div>
+            <div class="info-box">
+                <div>
+                    <i class="fas fa-map-marker-alt main-icon"></i>
+                    <h3>Localisation</h3>
+                    <p>En face de la Faculté de Médecine N° 2</p>
+                    <p>Résidence El Ghali, Fès</p>
+                </div>
+                <a href="https://maps.app.goo.gl/GM5wrmgGjVZ3ahav6?g_st=iw" target="_blank" class="btn-action btn-maps">
+                    <i class="fas fa-location-arrow"></i> Ouvrir Google Maps
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="https://www.facebook.com/share/1AvAT9iBdb/" class="fb-link" target="_blank">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <p style="margin-top: 15px;">© 2026 Laboratoire Shifa. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
