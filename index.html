@@ -78,15 +78,17 @@
         }
         .labo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px auto 0;
+            max-width: 900px; /* Centre les deux cartes et évite qu'elles ne s'étirent trop */
         }
         .labo-card {
             background: var(--bg-light);
-            padding: 25px;
+            padding: 30px;
             border-radius: 15px;
             border-left: 5px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
         }
         .labo-card h4 {
             color: var(--primary-color);
@@ -97,7 +99,7 @@
             gap: 10px;
         }
         .labo-card ul { list-style: none; padding: 0; }
-        .labo-card ul li { position: relative; padding-left: 30px; margin-bottom: 12px; color: #444; font-size: 1.05rem; }
+        .labo-card ul li { position: relative; padding-left: 30px; margin-bottom: 15px; color: #444; font-size: 1.05rem; }
         .labo-card ul li::before {
             content: '\f058';
             font-family: 'Font Awesome 6 Free';
@@ -123,7 +125,7 @@
         }
         .video-container video {
             width: 100%;
-            max-width: 800px; /* Limite la largeur sur les grands écrans */
+            max-width: 800px;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             outline: none;
@@ -231,13 +233,6 @@
             
             <div class="labo-grid">
                 <div class="labo-card">
-                    <h4><i class="fas fa-microscope"></i> Qualité Technique</h4>
-                    <ul>
-                        <li>Des analyses réalisées selon des standards internationaux reconnus.</li>
-                        <li>Participation à des programmes d’assurance qualité externe, notamment en immunohistochimie (UK-NEQAS).</li>
-                    </ul>
-                </div>
-                <div class="labo-card">
                     <h4><i class="fas fa-clipboard-check"></i> Gestion & Traçabilité</h4>
                     <ul>
                         <li>Une gestion efficace des prélèvements, assurée dans des délais optimisés.</li>
@@ -246,12 +241,13 @@
                         <li>Rendu des résultats compris entre 3 et 15 jours, selon le prélèvement.</li>
                     </ul>
                 </div>
+                
                 <div class="labo-card">
                     <h4><i class="fas fa-user-md"></i> Accompagnement Médical</h4>
                     <ul>
                         <li>Disponibilité du pathologiste pour accompagner, conseiller et échanger avec les médecins.</li>
                         <li>Approche pluridisciplinaire.</li>
-                        <li>Résultats communiqués au médecin traitant par voie électronique (email) ou par fax.</li>
+                        <li>Résultats communiqués au médecin traitant par voie électronique (email) ou par <strong>WhatsApp</strong>.</li>
                     </ul>
                 </div>
             </div>
